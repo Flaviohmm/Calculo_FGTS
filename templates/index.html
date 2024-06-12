@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora FGTS</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Cálculo FGTS</h1>
+        {% if error %}
+            <p class="text-danger">{{ error }}</p>
+        {% endif %}
+        <form method="post">
+            <label for="data_inicial">Data Inicial:</label>
+            <input type="text" name="data_inicial" id="data_inicial" class="form-control" placeholder="DD/MM/YYYY" required>   
+            
+            <label for="data_final">Data Final:</label>
+            <input type="text" name="data_final" id="data_final" class="form-control" placeholder="DD/MM/YYYY" required>
+
+            <label for="salario_bruto">Salário Bruto</label>
+            <input type="number" name="salario_bruto" id="salario_bruto" step="0.01" class="form-control" required>
+
+            <button type="submit" class="btn btn-primary mt-3">Calcular</button>
+        </form>
+    </div>
+</body>
+</html>
