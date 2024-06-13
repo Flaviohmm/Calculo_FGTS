@@ -8,10 +8,52 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="mt-5">Resultado de Cálculo FGTS</h1>
-        <p>Saldo do FGTS: R$ {{ saldo_fgts }}</p>
-        <p>Multa de 40% em caso de demissão sem justa causa: R$ {{ saldo_fgts * 0.4 }}</p>
-        <p>Total a receber com multa: R$ {{ saldo_fgts * 1.4 }}</p>
+        <h1 class="mt-5" id="resultado">Resultado de Cálculo FGTS</h1>
+        <p>Confira se preencheu as informações corretamente:</p>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>Início:</td>
+                    <td>{{ data_inicial }}</td>
+                </tr>
+                <tr>
+                    <td>Final:</td>
+                    <td>{{ data_final }}</td>
+                </tr>
+                <tr>
+                    <td>Meses Trabalhados:</td>
+                    <td>{{ meses_trabalhados }}</td>
+                </tr>
+                <tr>
+                    <td>Salário Base:</td>
+                    <td>R$ {{ salario_bruto }}</td>
+                </tr>
+                <tr>
+                    <td>Depósito FGTS/mês(8%):</td>
+                    <td>R$ {{ fgts_mensal }}</td>
+                </tr>
+                <tr>
+                    <td>Saldo FGTS:</td>
+                    <td>R$ {{ saldo_fgts }}</td>
+                </tr>
+                <tr>
+                    <td>Juros:</td>
+                    <td>R$ {{ juros }}</td>
+                </tr>
+                <tr>
+                    <td>Saldo FGTS Corrigido:</td>
+                    <td>R$ {{ saldo_fgts_corrigido }}</td>
+                </tr>
+                <tr>
+                    <td>Multa 40%:</td>
+                    <td>R$ {{ multa_40 }}</td>
+                </tr>
+                <tr>
+                    <td>Total FGTS com 40% de multa em caso de demissão:</td>
+                    <td>R$ {{ total_com_multa }}</td>
+                </tr>
+            </tbody>
+        </table>
         <a href="{{ url_for('index')}}" class="btn btn-primary">Voltar</a>
     </div>
 </body>
