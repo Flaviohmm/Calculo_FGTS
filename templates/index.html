@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora FGTS</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.css')}}" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -13,17 +13,50 @@
             <p class="text-danger">{{ error }}</p>
         {% endif %}
         <form method="post">
-            <label for="data_inicial">Data Inicial:</label>
-            <input type="text" name="data_inicial" id="data_inicial" class="form-control" placeholder="DD/MM/YYYY" required>   
+            <label for="data_inicial" class="form-label mt-4">Data Inicial:</label>
+            <input type="text" name="data_inicial" id="data_inicial" class="form-control mt-2" placeholder="DD/MM/YYYY" data-mask="00/00/0000" required>   
             
-            <label for="data_final">Data Final:</label>
-            <input type="text" name="data_final" id="data_final" class="form-control" placeholder="DD/MM/YYYY" required>
+            <label for="data_final" class="form-label mt-4">Data Final:</label>
+            <input type="text" name="data_final" id="data_final" class="form-control mt-2" placeholder="DD/MM/YYYY" data-mask="00/00/0000" required>
 
-            <label for="salario_bruto">Salário Bruto</label>
-            <input type="number" name="salario_bruto" id="salario_bruto" step="0.01" class="form-control" required>
+            <label for="salario_bruto" class="form-label mt-4">Salário Bruto</label>
+            <input type="number" name="salario_bruto" id="salario_bruto" step="0.01" class="form-control mt-2" required>
 
             <button type="submit" class="btn btn-primary mt-3">Calcular</button>
         </form>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var dataInicial = document.getElementById('data_inicial');
+            var dataFinal = document.getElementById('data_final');
+
+            function formatarData(input){
+                if(input.value.length === 2 || input.value.length === 5){
+                    input.value += '/';
+                }
+            }
+
+            function limitarAno(input){
+                let partes = input.value.split('/');
+                if(partes.length === 3 && partes[2].length > 4){
+                    partes[2] = partes[2].slice(0, 4);
+                    input.value = partes.join('/');
+                }
+            }
+
+            dataInicial.addEventListener('input', function(){
+                formatarData(this);
+                limitarAno(this);
+            });
+
+            dataFinal.addEventListener('input', function(){
+                formatarData(this);
+                limitarAno(this);
+            })
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 </body>
 </html>

@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultado FGTS</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.css')}}" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <h1 class="mt-5" id="resultado">Resultado de Cálculo FGTS</h1>
         <p>Confira se preencheu as informações corretamente:</p>
-        <table class="table">
+        <table class="table table-hover">
             <tbody>
                 <tr>
                     <td>Início:</td>
